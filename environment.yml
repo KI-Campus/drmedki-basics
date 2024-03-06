@@ -1,4 +1,4 @@
-name: drmedki
+name: python-drmedki
 channels:
   - conda-forge
 dependencies:
