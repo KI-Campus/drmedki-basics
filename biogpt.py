@@ -45,8 +45,8 @@ st.markdown("Tokenizer set.")
 generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
 st.markdown("Generator set.")
 
-set_seed(42)
-st.markdown("Seed set. Let's go!")
+#set_seed(42)
+#st.markdown("Seed set. Let's go!")
 
 st.markdown("---")
 
