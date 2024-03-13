@@ -58,7 +58,9 @@ if prompt_option.startswith("Prompt 1"):
     
     output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
     st.markdown("Answer of BioGPT: ")
-    st.markdown(output)
+
+    for item in output:
+        st.markdown(f"- {item['generated_text']}")
 
 elif prompt_option.startswith("Prompt 2"):
     
@@ -66,6 +68,8 @@ elif prompt_option.startswith("Prompt 2"):
                 context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
                 answer: the disease is called """
     output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+
+    st.markdown("Answer of BioGPT: ")
     for item in output:
         answer_start = item['generated_text'].find('answer:')
         if answer_start != -1:
@@ -74,12 +78,12 @@ elif prompt_option.startswith("Prompt 2"):
             
 elif prompt_option.startswith("Prompt 3"):
     
-    # Code für den dritten Prompt
+    st.markdown("Answer of BioGPT: ")
     st.write("Dies ist der dritte Prompt")
     
 elif prompt_option.startswith("Prompt 4"):
     
-    # Code für den vierten Prompt
+    st.markdown("Answer of BioGPT: ")
     st.write("Dies ist der vierte Prompt")
 
 # Ende des Streamlit Seitenlayouts
