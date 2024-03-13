@@ -63,6 +63,21 @@ if prompt_option.startswith("Prompt 1"):
         st.markdown(f"- {item['generated_text']}")
 
 elif prompt_option.startswith("Prompt 2"):
+
+    input_text= """ question: What are the symptoms?
+                context: I would like to know the symptoms of migraine
+                answer: The symptoms of a migraine are  """
+    output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+
+    st.markdown("Answer of BioGPT: ")
+    for item in output:
+        answer_start = item['generated_text'].find('answer:')
+        if answer_start != -1:
+            answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+            st.markdown(answer_text)
+   
+            
+elif prompt_option.startswith("Prompt 3"):
     
     input_text= """ question: What is the name of the disease?
                 context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
@@ -75,11 +90,6 @@ elif prompt_option.startswith("Prompt 2"):
         if answer_start != -1:
             answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
             st.markdown(answer_text)
-            
-elif prompt_option.startswith("Prompt 3"):
-    
-    st.markdown("Answer of BioGPT: ")
-    st.write("Dies ist der dritte Prompt")
     
 elif prompt_option.startswith("Prompt 4"):
     
