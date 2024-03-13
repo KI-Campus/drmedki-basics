@@ -96,18 +96,33 @@ elif prompt_option.startswith("Prompt 4"):
     st.markdown("Answer of BioGPT: ")
     st.write("Dies ist der vierte Prompt")
 
-# Abschnitt Code sleber generieren
+# Abschnitt Code selber generieren
 st.markdown("---")
 
-
+st.markdown("Hier kannst du selber versuchen einen Prompt zu schreiben.)
+st.markdown("Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst./
+                Beachte auch, dass das Model nur Englisch versteht. /
+                Beispiel: 'I would like to know the symtoms of migrain'")
+                
 input_text = st.text_area("Geben Sie Ihren Text ein:", "")
 
 # Funktion zum Generieren des Texts
 def generate_text(input_text):
     if input_text:
-        # Hier das Modell oder die Verarbeitungsfunktion einfügen, um den Text zu generieren
-        output_text = f"Der generierte Text basierend auf '{input_text}'"
-        return output_text
+        input_text_model= """ question: What are the symptoms?
+                context: """+ input_text + """
+                answer: The symptoms are """
+
+        output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+
+        st.markdown("Answer of BioGPT: ")
+        for item in output:
+            answer_start = item['generated_text'].find('answer:')
+            if answer_start != -1:
+                answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+                #st.markdown(answer_text)
+        #output_text = f"Der generierte Text basierend auf '{input_text}'"
+        return answer_text
     else:
         return None
 
@@ -115,7 +130,7 @@ def generate_text(input_text):
 if st.button("Generieren"):
     generated_text = generate_text(input_text)
     if generated_text:
-        st.markdown(f"## Generierter Text\n\n{generated_text}")
+        st.markdown(f"## BioGPT answer:\n\n{generated_text}")
     else:
         st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
 
