@@ -96,10 +96,30 @@ elif prompt_option.startswith("Prompt 4"):
     st.markdown("Answer of BioGPT: ")
     st.write("Dies ist der vierte Prompt")
 
-# Ende des Streamlit Seitenlayouts
+# Abschnitt Code sleber generieren
 st.markdown("---")
 
 
+input_text = st.text_area("Geben Sie Ihren Text ein:", "")
+
+# Funktion zum Generieren des Texts
+def generate_text(input_text):
+    if input_text:
+        # Hier das Modell oder die Verarbeitungsfunktion einfügen, um den Text zu generieren
+        output_text = f"Der generierte Text basierend auf '{input_text}'"
+        return output_text
+    else:
+        return None
+
+# Button zum Generieren des Texts
+if st.button("Generieren"):
+    generated_text = generate_text(input_text)
+    if generated_text:
+        st.markdown(f"## Generierter Text\n\n{generated_text}")
+    else:
+        st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
+
+# Ende des Streamlit Seitenlayouts
 #set_seed(42)
 #st.markdown("Seed set. Let's go!")
 
