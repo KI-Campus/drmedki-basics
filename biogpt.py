@@ -116,7 +116,6 @@ def generate_text(input_text):
 
         output = generator(input_text_model , max_length=200, num_return_sequences=1, do_sample=False)
 
-        st.markdown("Answer of BioGPT: ")
         for item in output:
             answer_start = item['generated_text'].find('answer:')
             if answer_start != -1:
@@ -131,7 +130,8 @@ def generate_text(input_text):
 if st.button("Generieren"):
     generated_text = generate_text(input_text)
     if generated_text:
-        st.markdown(f"## BioGPT answer:\n\n{generated_text}")
+        st.markdown("Answer of BioGPT: ")
+        st.markdown(f"\n\n{generated_text}")
     else:
         st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
 
