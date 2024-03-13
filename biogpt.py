@@ -57,7 +57,7 @@ if prompt_option.startswith("Prompt 1"):
     #st.markdown("Input text: " + input_text)
     
     output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
-    st.markdown("Answer of BioGPT: ")
+    st.markdown("Antwort von BioGPT: ")
 
     for item in output:
         st.markdown(f"- {item['generated_text']}")
@@ -69,7 +69,7 @@ elif prompt_option.startswith("Prompt 2"):
                 answer: The symptoms of a migraine are  """
     output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
 
-    st.markdown("Answer of BioGPT: ")
+    st.markdown("Antwort von BioGPT: ")
     for item in output:
         answer_start = item['generated_text'].find('answer:')
         if answer_start != -1:
@@ -84,7 +84,7 @@ elif prompt_option.startswith("Prompt 3"):
                 answer: the disease is called """
     output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
 
-    st.markdown("Answer of BioGPT: ")
+    st.markdown("Antwort von BioGPT: ")
     for item in output:
         answer_start = item['generated_text'].find('answer:')
         if answer_start != -1:
@@ -93,7 +93,7 @@ elif prompt_option.startswith("Prompt 3"):
     
 elif prompt_option.startswith("Prompt 4"):
     
-    st.markdown("Answer of BioGPT: ")
+    st.markdown("Antwort von BioGPT: ")
     st.write("Dies ist der vierte Prompt")
 
 # Abschnitt Code selber generieren
@@ -132,7 +132,7 @@ def generate_text(input_text):
 if st.button("Generieren"):
     generated_text = generate_text(input_text)
     if generated_text:
-        st.markdown("Answer of BioGPT: ")
+        st.markdown("Antwort von BioGPT: ")
         for item in generated_text:
             answer_text_model=st.markdown(f"- {item['generated_text']}")
     else:
