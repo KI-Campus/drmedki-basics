@@ -41,7 +41,7 @@ prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
                         """Prompt 3: Symptomchecker: 
                         Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
-                        "Prompt 4: ..."
+                        #"Prompt 4: ..."
                        ]
 
 prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
