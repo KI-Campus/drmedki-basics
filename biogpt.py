@@ -116,7 +116,7 @@ num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "1", max
 if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
     num_outputs = int(num_outputs)
 else:
-    st.markdown.warning("Bitte geben Sie eine Zahl zwischen 1 und 10 ein.")
+    st.warning("Bitte geben Sie eine Zahl zwischen 1 und 10 ein.")g("Bitte geben Sie eine Zahl zwischen 1 und 10 ein.")
 
 # Funktion zum Generieren des Texts
 def generate_text(input_text):
