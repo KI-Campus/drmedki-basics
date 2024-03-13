@@ -23,7 +23,7 @@ import sacremoses
 
 st.markdown("---")
 
-prompt_list_dropdown = ["1 ) Generiere 5 answers 'Covid is ...'"", 
+prompt_list_dropdown = ["1 ) Generiere 5 answers 'Covid is ...'", 
                         "2) Generate answer to question 'What is ...'", 
                         "Prompt 3", 
                         "Prompt 4"
