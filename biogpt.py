@@ -37,7 +37,8 @@ st.markdown("Model loaded.")
 
 st.markdown("---")
 
-prompt_list_dropdown = ["Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
+prompt_list_dropdown = ["Wähle Prompt",
+                        "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
                         "Prompt 2: Beantworte mir die Frage 'What are the symptoms of migraine?'", 
                         "Prompt 3: ...", 
                         "Prompt 4: ..."
@@ -45,10 +46,11 @@ prompt_list_dropdown = ["Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid
 
 prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
 
-st.markdown("Du hast " + prompt_option + " gewählt.")
-st.markdown("---")
+#st.markdown("Du hast " + prompt_option + " gewählt.")
+#st.markdown("---")
 
 # Aktion basierend auf dem ausgewählten Prompt
+
 if prompt_option.startswith("Prompt 1"):
 
     input_text= "COVID-19 is"
