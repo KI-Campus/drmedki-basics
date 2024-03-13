@@ -61,19 +61,24 @@ if prompt_option.startswith("Prompt 1"):
     st.markdown(output)
 
 elif prompt_option.startswith("Prompt 2"):
+    
     input_text= """ question: What is the name of the disease?
                 context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
                 answer: the disease is called """
     output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
     for item in output:
-    answer_start = item['generated_text'].find('answer:')
-    if answer_start != -1:
-        answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
-        st.write(answer_text)
+        answer_start = item['generated_text'].find('answer:')
+        if answer_start != -1:
+            answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+            st.markdown(answer_text)
+            
 elif prompt_option.startswith("Prompt 3"):
+    
     # Code für den dritten Prompt
     st.write("Dies ist der dritte Prompt")
+    
 elif prompt_option.startswith("Prompt 4"):
+    
     # Code für den vierten Prompt
     st.write("Dies ist der vierte Prompt")
 
