@@ -39,8 +39,8 @@ st.markdown("---")
 
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
-                        "Prompt 2: Beantworte mir die Frage 'What are the symptoms of migraine?'", 
-                        "Prompt 3: ...", 
+                        "Prompt 2: Beantworte mir die Frage 'What are the symptoms of a migraine?'", 
+                        "Prompt 3: Beantworte mir, um welche Krankheit es sich handelt bei folgenden Symptomen: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound", 
                         "Prompt 4: ..."
                        ]
 
@@ -61,8 +61,15 @@ if prompt_option.startswith("Prompt 1"):
     st.markdown(output)
 
 elif prompt_option.startswith("Prompt 2"):
-    # Code für den zweiten Prompt: Ausgabe von "Hello World"
-    st.write("Hello World!")
+    input_text= """ question: What is the name of the disease?
+                context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
+                answer: the disease is called """
+    output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+    for item in output:
+    answer_start = item['generated_text'].find('answer:')
+    if answer_start != -1:
+        answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+        st.write(answer_text)
 elif prompt_option.startswith("Prompt 3"):
     # Code für den dritten Prompt
     st.write("Dies ist der dritte Prompt")
