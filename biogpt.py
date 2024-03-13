@@ -15,8 +15,6 @@ def install(sacremoses):
 # !pip install sacremoses
 
 
-st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
-
 from transformers import pipeline, set_seed
 from transformers import BioGptTokenizer, BioGptForCausalLM
 import sacremoses
@@ -37,10 +35,11 @@ st.markdown("Model loaded.")
 
 st.markdown("---")
 
+st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
-                        "Prompt 2: Beantworte mir die Frage 'What are the symptoms of a migraine?'", 
-                        """Prompt 3: Beantworte mir, um welche Krankheit es sich handelt bei folgenden Symptomen: 
+                        "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
+                        """Prompt 3: Symptomchecker: 
                         Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
                         "Prompt 4: ..."
                        ]
@@ -101,10 +100,10 @@ elif prompt_option.startswith("Prompt 4"):
 st.markdown("---")
 
 prompt_text = """
-Hier kannst du selber versuchen einen Prompt zu schreiben. 
-- Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst.
+Hier kannst du selber einen Prompt schreiben. 
+- Schreibe den Anfang einen Satzes und lasse das Model deinen Satz vervollständigen.
 - Beachte auch, dass das Model nur Englisch versteht.
-- Beispiel: 'I would like to know the symptoms of migraine'
+- Beispiel: 'Covid-19 is', 'The symptoms of migraine are'
 """
 
 st.markdown(prompt_text)
@@ -114,18 +113,11 @@ input_text = st.text_area("Geben Sie Ihren Text ein:", "")
 # Funktion zum Generieren des Texts
 def generate_text(input_text):
     if input_text:
-        input_text_model= """ question: What are the symptoms?
-                context: """+ input_text + """
-                answer: The symptoms are """
-
-        output = generator(input_text_model , max_length=200, num_return_sequences=1, do_sample=False)
+         output = generator(input_text, max_length=20, num_return_sequences=1, do_sample=True)
 
         for item in output:
-            answer_start = item['generated_text'].find('answer:')
-            if answer_start != -1:
-                answer_text_model = item['generated_text'][answer_start + len('answer:'):].strip()
-                #st.markdown(answer_text_model)
-        #output_text = f"Der generierte Text basierend auf '{input_text}'"
+            answer_text_model=st.markdown(f"- {item['generated_text']}")
+            
         return answer_text_model
     else:
         return None
