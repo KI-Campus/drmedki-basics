@@ -23,8 +23,8 @@ import sacremoses
 
 st.markdown("---")
 
-prompt_list_dropdown = ["Prompt 1", 
-                        "Prompt 2", 
+prompt_list_dropdown = ["1 ) Generiere 5 answers 'Covid is ...'"", 
+                        "2) Generate answer to question 'What is ...'", 
                         "Prompt 3", 
                         "Prompt 4"
                        ]
@@ -32,6 +32,46 @@ prompt_list_dropdown = ["Prompt 1",
 prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
 
 st.markdown("Du hast " + prompt_option + " gewählt.")
+
+User
+ich habe folgenden code und möchte je nach prompt 1,2,3 oder 4 andere ausgaben in streamlit geben. ZB bei prompt 1 soll es mir 1+1 ausrechnen. wenn ich prompt 2 selektiere, soll es mir "hello word ausgeben": st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
+
+from transformers import pipeline, set_seed
+from transformers import BioGptTokenizer, BioGptForCausalLM
+import sacremoses
+
+st.markdown("---")
+
+prompt_list_dropdown = ["1) Generiere 5 answers 'Covid is ...'"", 
+                        "2) Generate answer to question 'What is ...'", 
+                        "3) Prompt 3", 
+                        "4) Prompt 4"
+                       ]
+
+prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
+
+st.markdown("Du hast " + prompt_option + " gewählt.")
+
+
+st.markdown("---")
+
+# Aktion basierend auf dem ausgewählten Prompt
+if prompt_option.startswith("1"):
+    # Code für den ersten Prompt: Berechnung von 1+1
+    result = 1 + 1
+    st.write("Das Ergebnis von 1 + 1 ist:", result)
+elif prompt_option.startswith("2"):
+    # Code für den zweiten Prompt: Ausgabe von "Hello World"
+    st.write("Hello World!")
+elif prompt_option.startswith("3"):
+    # Code für den dritten Prompt
+    st.write("Dies ist der dritte Prompt")
+elif prompt_option.startswith("4"):
+    # Code für den vierten Prompt
+    st.write("Dies ist der vierte Prompt")
+
+# Ende des Streamlit Seitenlayouts
+st.markdown("---")
 
 st.markdown("---")
 
