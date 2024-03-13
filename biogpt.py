@@ -2,7 +2,7 @@ import streamlit as st
 
 st.markdown("## Chatten mit BioGPT")
 
-!pip install transformers
+%pip install transformers
 # !pip install sacremoses
 
 
