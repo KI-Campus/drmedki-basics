@@ -104,7 +104,7 @@ prompt_text = """
 Hier kannst du selber versuchen einen Prompt zu schreiben. 
 - Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst.
 - Beachte auch, dass das Model nur Englisch versteht.
-- Beispiel: 'I would like to know the symtoms of migraine'
+- Beispiel: 'I would like to know the symptoms of migraine'
 """
 
 st.markdown(prompt_text)
