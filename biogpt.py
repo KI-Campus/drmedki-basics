@@ -2,7 +2,12 @@ import streamlit as st
 
 st.markdown("## Chatten mit BioGPT")
 
-%pip install transformers
+import subprocess
+import sys
+
+def install(transformers):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", transformers ])
+# !pip install transformers
 # !pip install sacremoses
 
 
