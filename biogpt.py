@@ -110,7 +110,7 @@ st.markdown(prompt_text)
                 
 input_text = st.text_area("Geben Sie Ihren Text ein:", "")
 # Textfeld für die Anzahl der Outputs
-num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "1", max_chars=2)
+num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "3", max_chars=2)
 
 # Überprüfe, ob die eingegebene Zahl zwischen 1 und 10 liegt
 if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
