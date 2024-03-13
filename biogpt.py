@@ -32,27 +32,6 @@ prompt_list_dropdown = ["1 ) Generiere 5 answers 'Covid is ...'",
 prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
 
 st.markdown("Du hast " + prompt_option + " gewählt.")
-
-User
-ich habe folgenden code und möchte je nach prompt 1,2,3 oder 4 andere ausgaben in streamlit geben. ZB bei prompt 1 soll es mir 1+1 ausrechnen. wenn ich prompt 2 selektiere, soll es mir "hello word ausgeben": st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
-
-from transformers import pipeline, set_seed
-from transformers import BioGptTokenizer, BioGptForCausalLM
-import sacremoses
-
-st.markdown("---")
-
-prompt_list_dropdown = ["1) Generiere 5 answers 'Covid is ...'"", 
-                        "2) Generate answer to question 'What is ...'", 
-                        "3) Prompt 3", 
-                        "4) Prompt 4"
-                       ]
-
-prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
-
-st.markdown("Du hast " + prompt_option + " gewählt.")
-
-
 st.markdown("---")
 
 # Aktion basierend auf dem ausgewählten Prompt
