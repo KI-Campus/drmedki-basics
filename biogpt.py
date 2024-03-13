@@ -114,16 +114,16 @@ def generate_text(input_text):
                 context: """+ input_text + """
                 answer: The symptoms are """
 
-        output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+        output = generator(input_text_model , max_length=200, num_return_sequences=1, do_sample=False)
 
         st.markdown("Answer of BioGPT: ")
         for item in output:
             answer_start = item['generated_text'].find('answer:')
             if answer_start != -1:
-                answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
-                #st.markdown(answer_text)
+                answer_text_model = item['generated_text'][answer_start + len('answer:'):].strip()
+                #st.markdown(answer_text_model)
         #output_text = f"Der generierte Text basierend auf '{input_text}'"
-        return answer_text
+        return answer_text_model
     else:
         return None
 
