@@ -99,7 +99,7 @@ elif prompt_option.startswith("Prompt 4"):
 # Abschnitt Code selber generieren
 st.markdown("---")
 
-st.markdown("Hier kannst du selber versuchen einen Prompt zu schreiben.)
+st.markdown("Hier kannst du selber versuchen einen Prompt zu schreiben.")
 st.markdown("Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst./
                 Beachte auch, dass das Model nur Englisch versteht. /
                 Beispiel: 'I would like to know the symtoms of migrain'")
