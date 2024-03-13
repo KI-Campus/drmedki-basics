@@ -1,12 +1,14 @@
-# !pip install sacremoses
-# !pip install transformers
-
 import streamlit as st
-# from transformers import pipeline
 
 st.markdown("## Chatten mit BioGPT")
 
+!pip install transformers
+# !pip install sacremoses
+
+
 st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
+
+from transformers import pipeline
 
 st.markdown("---")
 
