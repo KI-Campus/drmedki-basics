@@ -113,8 +113,8 @@ input_text = st.text_area("Geben Sie Ihren Text ein:", "")
 # Funktion zum Generieren des Texts
 def generate_text(input_text):
     if input_text:
-         output = generator(input_text, max_length=20, num_return_sequences=1, do_sample=True)
-
+        
+        output = generator(input_text, max_length=20, num_return_sequences=1, do_sample=True)
         for item in output:
             answer_text_model=st.markdown(f"- {item['generated_text']}")
             
