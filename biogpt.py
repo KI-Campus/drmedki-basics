@@ -40,7 +40,8 @@ st.markdown("---")
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
                         "Prompt 2: Beantworte mir die Frage 'What are the symptoms of a migraine?'", 
-                        "Prompt 3: Beantworte mir, um welche Krankheit es sich handelt bei folgenden Symptomen: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound", 
+                        """Prompt 3: Beantworte mir, um welche Krankheit es sich handelt bei folgenden Symptomen: 
+                        Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
                         "Prompt 4: ..."
                        ]
 
@@ -99,10 +100,10 @@ elif prompt_option.startswith("Prompt 4"):
 # Abschnitt Code selber generieren
 st.markdown("---")
 
-st.markdown("Hier kannst du selber versuchen einen Prompt zu schreiben.")
-st.markdown("Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst./
-                Beachte auch, dass das Model nur Englisch versteht. /
-                Beispiel: 'I would like to know the symtoms of migrain'")
+st.markdown("""Hier kannst du selber versuchen einen Prompt zu schreiben.
+            Beachte, dass du in diesem speziellen Fenster nur Aussagen hinsichtlich der Symptome bestimmter Krankheiten erfragen kannst.
+            Beachte auch, dass das Model nur Englisch versteht. 
+            Beispiel: 'I would like to know the symtoms of migraine'""")
                 
 input_text = st.text_area("Geben Sie Ihren Text ein:", "")
 
