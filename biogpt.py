@@ -21,12 +21,26 @@ from transformers import pipeline, set_seed
 from transformers import BioGptTokenizer, BioGptForCausalLM
 import sacremoses
 
+
+st.markdown("Loading model...")
+
+model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+#st.markdown("Model set.")
+
+tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+#st.markdown("Tokenizer set.")
+
+generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
+#st.markdown("Generator set.")
+
+st.markdown("Model loaded.")
+
 st.markdown("---")
 
-prompt_list_dropdown = ["1 ) Generiere 5 answers 'Covid is ...'", 
-                        "2) Generate answer to question 'What is ...'", 
-                        "Prompt 3", 
-                        "Prompt 4"
+prompt_list_dropdown = ["Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
+                        "Prompt 2: Beantworte mir die Frage 'What are the symptoms of migraine?'", 
+                        "Prompt 3: ...", 
+                        "Prompt 4: ..."
                        ]
 
 prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
@@ -35,47 +49,34 @@ st.markdown("Du hast " + prompt_option + " gewählt.")
 st.markdown("---")
 
 # Aktion basierend auf dem ausgewählten Prompt
-if prompt_option.startswith("1"):
-    # Code für den ersten Prompt: Berechnung von 1+1
-    result = 1 + 1
-    st.write("Das Ergebnis von 1 + 1 ist:", result)
-elif prompt_option.startswith("2"):
+if prompt_option.startswith("Prompt 1"):
+
+    input_text= "COVID-19 is"
+    #st.markdown("Input text: " + input_text)
+    
+    output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
+    st.markdown("Answer of BioGPT: ")
+    st.markdown(output)
+
+elif prompt_option.startswith("Prompt 2"):
     # Code für den zweiten Prompt: Ausgabe von "Hello World"
     st.write("Hello World!")
-elif prompt_option.startswith("3"):
+elif prompt_option.startswith("Prompt 3"):
     # Code für den dritten Prompt
     st.write("Dies ist der dritte Prompt")
-elif prompt_option.startswith("4"):
+elif prompt_option.startswith("Prompt 4"):
     # Code für den vierten Prompt
     st.write("Dies ist der vierte Prompt")
 
 # Ende des Streamlit Seitenlayouts
 st.markdown("---")
 
-st.markdown("---")
-
-
-model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
-st.markdown("Model set.")
-
-tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-st.markdown("Tokenizer set.")
-
-generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
-st.markdown("Generator set.")
 
 #set_seed(42)
 #st.markdown("Seed set. Let's go!")
 
-st.markdown("---")
 
 
-input_text= "COVID-19 is"
-st.markdown("Input text: " + input_text)
-
-
-output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
-st.markdown(output)
 
 
 
