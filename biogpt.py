@@ -109,7 +109,8 @@ Hier kannst du selber einen Prompt schreiben.
 st.markdown(prompt_text)
                 
 input_text = st.text_area("Geben Sie Ihren Text ein:", "")
-num_outputs = st.sidebar.text_input("Anzahl der Outputs (1-10):", "1")
+# Textfeld für die Anzahl der Outputs
+num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "1", max_chars=2)
 
 # Überprüfe, ob die eingegebene Zahl zwischen 1 und 10 liegt
 if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
@@ -132,7 +133,7 @@ if st.button("Generieren"):
     generated_text = generate_text(input_text)
     if generated_text:
         st.markdown("Answer of BioGPT: ")
-        for item in output:
+        for item in generated_text:
             answer_text_model=st.markdown(f"- {item['generated_text']}")
     else:
         st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
