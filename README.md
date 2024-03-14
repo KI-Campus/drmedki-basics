@@ -1,4 +1,4 @@
 # Dr med KI - Basics
 
-Hier ein paar Notebooks, um mit Generativer KI zu experimentieren. 
+Hier ein paar Notebooks und Dashboards, um mit Generativer KI zu experimentieren. 
 
