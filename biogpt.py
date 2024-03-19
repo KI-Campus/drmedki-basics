@@ -36,13 +36,14 @@ st.markdown("Du hast " + prompt_option + " gewählt.")
 st.markdown("---")
 
 
-model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
-st.markdown("Model set.")
+#model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+st.markdown("Model setting.")
 
-tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-st.markdown("Tokenizer set.")
+#tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+#st.markdown("Tokenizer set.")
 
-generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
+#generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
+generator = pipeline("text-generation", model="BioMistral/BioMistral-7B")
 st.markdown("Generator set.")
 
 #set_seed(42)
