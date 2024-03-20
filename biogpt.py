@@ -134,7 +134,7 @@ if st.button("Generieren"):
     if generated_text:
         st.markdown("Antwort von BioGPT: ")
         for item in generated_text:
-            answer_text_model=st.markdown(f"- {item['generated_text']}")
+            st.markdown(f"- {item['generated_text']}")
     else:
         st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
 
