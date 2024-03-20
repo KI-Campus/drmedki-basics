@@ -3,5 +3,5 @@ channels:
   - conda-forge
 dependencies:
   - streamlit=1.32.0
-  - sacremoses=0.1.2
+  - sacremoses
   - transformers=4.38.2
