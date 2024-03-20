@@ -5,3 +5,4 @@ dependencies:
   - streamlit=1.32.0
   - sacremoses
   - transformers=4.38.2
+  - pytorch
