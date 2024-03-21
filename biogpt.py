@@ -2,25 +2,24 @@ import streamlit as st
 
 st.markdown("## Chatten mit BioGPT")
 
-import subprocess
-import sys
+#import subprocess
+#import sys
 
-def install(transformers):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", transformers ])
+#def install(transformers):
+#    subprocess.check_call([sys.executable, "-m", "pip", "install", transformers ])
 
-def install(sacremoses):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", sacremoses ])
+#def install(sacremoses):
+#    subprocess.check_call([sys.executable, "-m", "pip", "install", sacremoses ])
     
 # !pip install transformers
 # !pip install sacremoses
 
+st.markdown("Loading model...")
 
 from transformers import pipeline, set_seed
 from transformers import BioGptTokenizer, BioGptForCausalLM
 import sacremoses
 
-
-st.markdown("Loading model...")
 
 model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
 #st.markdown("Model set.")
