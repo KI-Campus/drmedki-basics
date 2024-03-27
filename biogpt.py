@@ -21,12 +21,15 @@ st.markdown(
     .stProgress>div>div>div>div>div {
         background-color: #3A2A78; /* Hintergrundfarbe für Fortschrittsbalken */
     }
+    .chat-title {
+        color: #1AA469; /* Grün für den Titel */
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.markdown("## Chatten mit BioGPT")
+st.markdown("## <span class='chat-title'>Chatten mit BioGPT</span>", unsafe_allow_html=True)
 
 #import subprocess
 #import sys
