@@ -44,6 +44,9 @@ st.markdown(
         color: white; /* Weiße Schriftfarbe */
         border-radius: 5px;
     }
+    .st-eb, .st-dd {
+        background-color: white !important; /* Weißer Hintergrund */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -164,6 +167,7 @@ elif prompt_option.startswith("Prompt 4"):
     st.markdown("Antwort von BioGPT: ")
     st.write("Dies ist der vierte Prompt")
 
+st.markdown("---")
 # Abschnitt Code selber generieren
 st.markdown(
     """
@@ -173,7 +177,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown("---")
+
 prompt_text = """
 - Schreibe den Anfang einen Satzes und lasse das Model deinen Satz vervollständigen, siehe Beispiel Prompt 1.
 - Beachte auch, dass das Model nur Englisch versteht.
