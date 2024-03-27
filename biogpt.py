@@ -21,7 +21,7 @@ with open("320px-Infobox_info_icon.svg.png", "rb") as img_file:
     img_str = base64.b64encode(img_file.read()).decode("utf-8")
 st.markdown(
     f"""
-    <div style="padding: 10px; background-color: #3A2A78; border-radius: 5px;">
+    <div style="padding: 10px; background-color: #D2CBED; border-radius: 5px;">
         <img src="data:image/png;base64,{img_str}" style="width:20px;height:20px;">
         <span style="color:white;">Hallo, hier ist das Modell BioGPT. Das werden wir jetzt ausprobieren.</span>
     </div>
