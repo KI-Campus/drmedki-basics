@@ -1,12 +1,12 @@
 import streamlit as st
 import base64
-
+ #F8F8FF
 # Ändern Sie das Streamlit-Thema mit benutzerdefinierten Farben
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #F8F8FF; /* Hintergrundfarbe */
+        background-color: #D2CBED; /* Hintergrundfarbe */ 
     }
     .stTextInput>div>div>input {
         color: #6A5ACD; /* Textfarbe für Texteingaben */
@@ -15,11 +15,11 @@ st.markdown(
         color: #6A5ACD; /* Textfarbe für Textbereiche */
     }
     .stButton>button {
-        background-color: #6A5ACD; /* Hintergrundfarbe für Buttons */
+        background-color: #3A2A78; /* Hintergrundfarbe für Buttons */
         color: white; /* Textfarbe für Buttons */
     }
     .stProgress>div>div>div>div>div {
-        background-color: #6A5ACD; /* Hintergrundfarbe für Fortschrittsbalken */
+        background-color: #3A2A78; /* Hintergrundfarbe für Fortschrittsbalken */
     }
     </style>
     """,
