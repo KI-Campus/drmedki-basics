@@ -44,7 +44,7 @@ st.markdown(
         color: white; /* Weiße Schriftfarbe */
         border-radius: 5px;
     }
-    .st-eb, .st-dd {
+    .st-eb, .st-dd, .stTextInput>div>div>input{
         background-color: white !important; /* Weißer Hintergrund */
     }
     </style>
