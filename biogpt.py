@@ -23,7 +23,7 @@ with open("320px-Infobox_info_icon.svg.png", "rb") as img_file:
 st.markdown(
     f"""
     <div style="padding: 10px; background-color: #D2CBED; border-radius: 5px;">
-        <h1 style="font-weight: bold;">Infobox BioGPT</h1>
+        <p style="font-weight: bold;">Infobox BioGPT</p>
         <p>BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
         Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
         Diese Datenbank ermöglicht es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
