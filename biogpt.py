@@ -38,6 +38,12 @@ st.markdown(
     .infobox-text {
         color: black; /* Schwarze Schriftfarbe für den Text */
     }
+    .custom-box {
+        padding: 10px;
+        background-color: black; /* Schwarzer Hintergrund */
+        color: white; /* Weiße Schriftfarbe */
+        border-radius: 5px;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -75,23 +81,18 @@ st.markdown(
 )
 
 st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
-st.markdown("Loading model...")
+# Meldung "Loading model..."
+st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
 
-from transformers import pipeline, set_seed
+from transformers import pipeline
 from transformers import BioGptTokenizer, BioGptForCausalLM
-import sacremoses
-
 
 model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
-#st.markdown("Model set.")
-
 tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-#st.markdown("Tokenizer set.")
+generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
 
-generator = pipeline("text-generation",model=model,tokenizer=tokenizer)
-#st.markdown("Generator set.")
-
-st.markdown("Model loaded.")
+# Meldung "Model loaded."
+st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
 
 st.markdown("---")
 
