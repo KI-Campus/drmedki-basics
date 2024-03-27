@@ -6,7 +6,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-color: #D2CBED; /* Hintergrundfarbe */ 
+        background-color: #EAF4F8; /* Hintergrundfarbe */ 
     }
     .stTextInput>div>div>input {
         color: #6A5ACD; /* Textfarbe für Texteingaben */
