@@ -185,7 +185,7 @@ st.markdown("---")
 st.markdown(
     """
     <div class="infobox-container">
-        <p class="infobox-text">Hier kannst du selber einen Prompt schreiben. .</p>
+        <p class="infobox-text">Hier kannst du selber einen Prompt schreiben.</p>
     </div>
     """,
     unsafe_allow_html=True
