@@ -42,8 +42,7 @@ st.markdown(
         padding: 10px;
         background-color: black; /* Schwarzer Hintergrund */
         color: white; /* Weiße Schriftfarbe */
-        border-radius: 5px; /* Eckige Form */
-        padding: 10px;
+        border-radius: 0px; /* Eckige Form */
     }
     .st-eb, .st-dd, .stTextInput>div>div>input{
         background-color: white !important; /* Weißer Hintergrund */
