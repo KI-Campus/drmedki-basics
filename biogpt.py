@@ -29,11 +29,14 @@ st.markdown(
         background-color: white; /* Weißer Hintergrund */
         border: 2px solid #3A2A78; /* Lianenrand in lila */
         border-radius: 5px;
-        color: #FFFFFF; /* Lila Schriftfarbe */
         font-family: Arial, sans-serif; /* Schriftart */
     }
     .infobox-title {
+        color: #3A2A78; /* Lila Schriftfarbe für den Titel */
         font-weight: bold;
+    }
+    .infobox-text {
+        color: black; /* Schwarze Schriftfarbe für den Text */
     }
     </style>
     """,
@@ -61,7 +64,7 @@ st.markdown(
     """
     <div class="infobox-container">
         <p class="infobox-title">Infobox BioGPT</p>
-        <p>BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
+        <p class="infobox-text">BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
         Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
         Diese Datenbank ermöglicht es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
         Trotz seiner Fortschritte funktioniert BioGPT noch rudimentär und ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten. 
@@ -71,7 +74,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
+st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
 st.markdown("Loading model...")
 
 from transformers import pipeline, set_seed
