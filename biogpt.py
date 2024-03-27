@@ -107,7 +107,7 @@ Hier kannst du selber einen Prompt schreiben.
 
 st.markdown(prompt_text)
                 
-input_text = st.text_area("Geben Sie Ihren Text ein:", "")
+input_text = st.text_area("Gib hier deinen Satzanfang ein:", "")
 # Textfeld für die Anzahl der Outputs
 num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "3", max_chars=2)
 
