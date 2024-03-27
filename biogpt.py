@@ -29,7 +29,7 @@ st.markdown(
         background-color: white; /* Weißer Hintergrund */
         border: 2px solid #3A2A78; /* Lianenrand in lila */
         border-radius: 5px;
-        color: #3A2A78; /* Lila Schriftfarbe */
+        color: #FFFFFF; /* Lila Schriftfarbe */
         font-family: Arial, sans-serif; /* Schriftart */
     }
     .infobox-title {
