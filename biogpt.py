@@ -16,13 +16,16 @@ st.markdown("## Chatten mit BioGPT")
 # !pip install sacremoses
 
 # Infobox anzeigen
-st.markdown(
-        """
+# Info-Box mit lila Hintergrund und lokalem Info-Symbol
+    with open("320px-Infobox_info_icon.svg.png", "rb") as img_file:
+        img_str = base64.b64encode(img_file.read()).decode("utf-8")
+    st.markdown(
+        f"""
         <div style="padding: 10px; background-color: #3A2A78; border-radius: 5px;">
-            <img src="data:image/png;base64,{}" style="width:20px;height:20px;">
+            <img src="data:image/png;base64,{img_str}" style="width:20px;height:20px;">
             <span style="color:white;">Hallo, hier ist das Modell BioGPT. Das werden wir jetzt ausprobieren.</span>
         </div>
-        """.format(image_to_base64("320px-Infobox_info_icon.svg.png")),
+        """,
         unsafe_allow_html=True
     )
 
