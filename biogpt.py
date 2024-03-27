@@ -44,11 +44,21 @@ st.markdown(
         color: white; /* Weiße Schriftfarbe */
         border-radius: 0px; /* Eckige Form */
     }
-    .st-eb, .st-dd, .stTextInput>div>div>input{
+    .st-eb, .st-dd, .stTextInput>div>div>input {
         background-color: white !important; /* Weißer Hintergrund */
+        color: black !important; /* Schwarzer Text */
     }
-    .st-dd-options>li:hover, .st-dd-options>li.stOptionSelected {
-        background-color: #3A2A78 !important; /* Grüner Hintergrund für ausgewählte Option */
+    .st-dd::before {
+        color: black !important; /* Schwarzer Text für den Dropdown-Pfeil */
+    }
+    .st-dd-options {
+        color: black !important; /* Schwarzer Text für die Dropdown-Optionen */
+    }
+    .st-dd-container {
+        background-color: white !important; /* Weißer Hintergrund für das Dropdown-Menü */
+    }
+    .st-dd-options>li.stOptionSelected {
+        background-color: green !important; /* Grüner Hintergrund für ausgewählte Option */
     }
     </style>
     """,
