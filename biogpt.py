@@ -65,7 +65,7 @@ st.markdown("## <span class='chat-title'>Chatten mit BioGPT</span>", unsafe_allo
 
 
 
-# Beispielinhalt
+# Infobox
 st.markdown(
     """
     <div class="infobox-container">
@@ -96,7 +96,14 @@ st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=Tru
 
 st.markdown("---")
 
-st.markdown( "Hier können verschiedene Prompts mit BioGPT getestet werden." )
+st.markdown(
+    """
+    <div class="infobox-container">
+        <p class="infobox-text">Hier können verschiedene Prompts mit BioGPT getestet werden. .</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
                         "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
@@ -158,10 +165,16 @@ elif prompt_option.startswith("Prompt 4"):
     st.write("Dies ist der vierte Prompt")
 
 # Abschnitt Code selber generieren
+st.markdown(
+    """
+    <div class="infobox-container">
+        <p class="infobox-text">Hier kannst du selber einen Prompt schreiben. .</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.markdown("---")
-
 prompt_text = """
-Hier kannst du selber einen Prompt schreiben. 
 - Schreibe den Anfang einen Satzes und lasse das Model deinen Satz vervollständigen, siehe Beispiel Prompt 1.
 - Beachte auch, dass das Model nur Englisch versteht.
 - Beispiel: 'Covid-19 is', 'Migraine has the following symptoms:'
