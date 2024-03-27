@@ -19,11 +19,16 @@ st.markdown("## Chatten mit BioGPT")
 # Info-Box mit lila Hintergrund und lokalem Info-Symbol
 with open("320px-Infobox_info_icon.svg.png", "rb") as img_file:
     img_str = base64.b64encode(img_file.read()).decode("utf-8")
+
 st.markdown(
     f"""
     <div style="padding: 10px; background-color: #D2CBED; border-radius: 5px;">
-        <img src="data:image/png;base64,{img_str}" style="width:20px;height:20px;">
-        <span style="color:white;">Hallo, hier ist das Modell BioGPT. Das werden wir jetzt ausprobieren.</span>
+        <h1 style="font-weight: bold;">Infobox BioGPT</h1>
+        <p>BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
+        Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
+        Diese Datenbank ermöglicht es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
+        Trotz seiner Fortschritte funktioniert BioGPT noch rudimentär und ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten. 
+        Es reagiert empfindlich auf Inputs und befindet sich noch in der Entwicklungsphase. Dies kannst du testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst. .</p>
     </div>
     """,
     unsafe_allow_html=True
