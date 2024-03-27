@@ -15,8 +15,11 @@ st.markdown("## Chatten mit BioGPT")
 # !pip install sacremoses
 
 # Infobox anzeigen
-st.sidebar.header("Info")
-st.sidebar.info("Hallo, hier ist das Modell BioGPT. Das werden wir jetzt ausprobieren.")
+st.markdown('<div style="padding: 10px; background-color: #8a2be2; border-radius: 5px;">'
+                '<img src="320px-Infobox_info_icon.svg.png" style="width:20px;height:20px;">'
+                '<span style="color:white;">Hallo, hier ist das Modell BioGPT. Das werden wir jetzt ausprobieren.</span>'
+                '</div>', unsafe_allow_html=True)
+
 
 st.markdown("Loading model...")
 
