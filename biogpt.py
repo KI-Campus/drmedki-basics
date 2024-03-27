@@ -24,6 +24,16 @@ st.markdown(
     .chat-title {
         color: #1AA469; /* Grün für den Titel */
     }
+    .infobox-container {
+        padding: 10px;
+        background-color: white; /* Weißer Hintergrund */
+        border: 2px solid #32CD32; /* Lianenrand */
+        border-radius: 5px;
+    }
+    .infobox-title {
+        color: #6A5ACD; /* Dunkellila Farbe für den Titel */
+        font-weight: bold;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -43,15 +53,13 @@ st.markdown("## <span class='chat-title'>Chatten mit BioGPT</span>", unsafe_allo
 # !pip install transformers
 # !pip install sacremoses
 
-# Infobox anzeigen
-# Info-Box mit lila Hintergrund und lokalem Info-Symbol
-with open("320px-Infobox_info_icon.svg.png", "rb") as img_file:
-    img_str = base64.b64encode(img_file.read()).decode("utf-8")
 
+
+# Beispielinhalt
 st.markdown(
-    f"""
-    <div style="padding: 10px; background-color: #D2CBED; border-radius: 5px;">
-        <p style="font-weight: bold;">Infobox BioGPT</p>
+    """
+    <div class="infobox-container">
+        <p class="infobox-title">Infobox BioGPT</p>
         <p>BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
         Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
         Diese Datenbank ermöglicht es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
