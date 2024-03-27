@@ -47,6 +47,9 @@ st.markdown(
     .st-eb, .st-dd, .stTextInput>div>div>input{
         background-color: white !important; /* Weißer Hintergrund */
     }
+    .st-dd-options>li:hover, .st-dd-options>li.stOptionSelected {
+        background-color: #3A2A78 !important; /* Grüner Hintergrund für ausgewählte Option */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -102,7 +105,7 @@ st.markdown("---")
 st.markdown(
     """
     <div class="infobox-container">
-        <p class="infobox-text">Hier können verschiedene Prompts mit BioGPT getestet werden. .</p>
+        <p class="infobox-text">Hier können verschiedene Prompts mit BioGPT getestet werden.</p>
     </div>
     """,
     unsafe_allow_html=True
