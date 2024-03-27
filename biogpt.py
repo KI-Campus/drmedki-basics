@@ -2,17 +2,29 @@ import streamlit as st
 import base64
 
 # Ändern Sie das Streamlit-Thema mit benutzerdefinierten Farben
-custom_theme = {
-    "primaryColor": "#6A5ACD",  # Lila
-    "backgroundColor": "#F8F8FF",  # Weiß
-    "secondaryBackgroundColor": "#E6E6FA",  # Lavendel
-    "textColor": "#483D8B",  # Dunkelblau
-    "font": "sans-serif"
-}
-
-# Anwendung des benutzerdefinierten Themas
-st.set_page_config(page_title="Lila Theme", page_icon=None, layout='centered', initial_sidebar_state='auto', theme=custom_theme)
-
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #F8F8FF; /* Hintergrundfarbe */
+    }
+    .stTextInput>div>div>input {
+        color: #6A5ACD; /* Textfarbe für Texteingaben */
+    }
+    .stTextArea>div>div>textarea {
+        color: #6A5ACD; /* Textfarbe für Textbereiche */
+    }
+    .stButton>button {
+        background-color: #6A5ACD; /* Hintergrundfarbe für Buttons */
+        color: white; /* Textfarbe für Buttons */
+    }
+    .stProgress>div>div>div>div>div {
+        background-color: #6A5ACD; /* Hintergrundfarbe für Fortschrittsbalken */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown("## Chatten mit BioGPT")
 
