@@ -133,12 +133,10 @@ def main():
         st.session_state.initialized = True
         st.session_state.model = load_model()
         st.session_state.selectbox_options = load_selectbox_options()
-     st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
 
     # Infoboxen und Selectbox
     st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
-    st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
-    st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
     st.markdown("---")
     st.markdown("<div class='infobox-container'>Hier können verschiedene Prompts mit BioGPT getestet werden.</div>", unsafe_allow_html=True)
     st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
