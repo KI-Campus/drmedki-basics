@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+from transformers import pipeline, BioGptTokenizer, BioGptForCausalLM
  #F8F8FF
 # Ändern Sie das Streamlit-Thema mit benutzerdefinierten Farben
 st.markdown(
@@ -80,66 +81,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("## <span class='chat-title'>Chatten mit BioGPT</span>", unsafe_allow_html=True)
 
-#import subprocess
-#import sys
+# Laden des Modells und der Tokenizer
+@st.cache(allow_output_mutation=True)
+def load_model():
+    st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
+    model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+    tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+    generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
+    st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
+    return generator
 
-#def install(transformers):
-#    subprocess.check_call([sys.executable, "-m", "pip", "install", transformers ])
-
-#def install(sacremoses):
-#    subprocess.check_call([sys.executable, "-m", "pip", "install", sacremoses ])
-    
-# !pip install transformers
-# !pip install sacremoses
-
-
-
-# Infobox
-st.markdown(
-    """
-    <div class="infobox-container">
-        <p class="infobox-title">Infobox BioGPT</p>
-        <p class="infobox-text">BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
-        Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
-        Im Vergleich zu anderen großen Sprachmodellen wie GPT-3 wurde BioGPT damit auf viel weniger Daten trainiert. 
-        Deshalb funktioniert BioGPT teilweise rudimentär, ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten 
-        und reagiert empfindlich auf Inputs. 
-        Dennoch ermöglicht diese Datenbank es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
-        Du kannst dies testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst.</p>
-        <p class="infobox-source">Quelle: Renqian Luo, Liai Sun, Yingce Xia, Tao Qin, Sheng Zhang, Hoifung Poon, Tie-Yan Liu, BioGPT: 
-        generative pre-trained transformer for biomedical text generation and mining, Briefings in Bioinformatics, Volume 23, Issue 6, November 2022, bbac409, https://doi.org/10.1093/bib/bbac409</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
-# Meldung "Loading model..."
-st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
-
-from transformers import pipeline
-from transformers import BioGptTokenizer, BioGptForCausalLM
-
-model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
-tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
-
-# Meldung "Model loaded."
-st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
-
-st.markdown("---")
-
-st.markdown(
-    """
-    <div class="infobox-container">
-        Hier können verschiedene Prompts mit BioGPT getestet werden.
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
+# Definiere die Optionen für die Selectbox
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
                         "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
@@ -148,113 +101,86 @@ prompt_list_dropdown = ["Wähle Prompt",
                         #"Prompt 4: ..."
                        ]
 
-prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
 
-#st.markdown("Du hast " + prompt_option + " gewählt.")
-#st.markdown("---")
 
-# Aktion basierend auf dem ausgewählten Prompt
 
-if prompt_option.startswith("Prompt 1"):
 
-    input_text= "COVID-19 is"
-    #st.markdown("Input text: " + input_text)
-    
-    output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
-    st.markdown("Antwort von BioGPT: ")
+# Hauptfunktionsstruktur
+def main():
 
-    for item in output:
-        st.markdown(f"- {item['generated_text']}")
-
-elif prompt_option.startswith("Prompt 2"):
-
-    input_text= """ question: What are the symptoms?
-                context: I would like to know the symptoms of migraine
-                answer: The symptoms of a migraine are  """
-    output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
-
-    st.markdown("Antwort von BioGPT: ")
-    for item in output:
-        answer_start = item['generated_text'].find('answer:')
-        if answer_start != -1:
-            answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
-            st.markdown(answer_text)
+    st.markdown("## <span class='chat-title'>Chatten mit BioGPT</span>", unsafe_allow_html=True)
    
-            
-elif prompt_option.startswith("Prompt 3"):
-    
-    input_text= """ question: What is the name of the disease?
-                context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
-                answer: the disease is called """
-    output = generator(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+    # Infobox
+    st.markdown(
+       """
+       <div class="infobox-container">
+           <p class="infobox-title">Infobox BioGPT</p>
+           <p class="infobox-text">BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
+           Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
+           Im Vergleich zu anderen großen Sprachmodellen wie GPT-3 wurde BioGPT damit auf viel weniger Daten trainiert. 
+           Deshalb funktioniert BioGPT teilweise rudimentär, ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten 
+           und reagiert empfindlich auf Inputs. 
+           Dennoch ermöglicht diese Datenbank es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
+           Du kannst dies testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst.</p>
+           <p class="infobox-source">Quelle: Renqian Luo, Liai Sun, Yingce Xia, Tao Qin, Sheng Zhang, Hoifung Poon, Tie-Yan Liu, BioGPT: 
+           generative pre-trained transformer for biomedical text generation and mining, Briefings in Bioinformatics, Volume 23, Issue 6, November 2022, bbac409, https://doi.org/10.1093/bib/bbac409</p>
+       </div>
+       """,
+       unsafe_allow_html=True
+    )
 
-    st.markdown("Antwort von BioGPT: ")
-    for item in output:
-        answer_start = item['generated_text'].find('answer:')
-        if answer_start != -1:
-            answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
-            st.markdown(answer_text)
-    
-elif prompt_option.startswith("Prompt 4"):
-    
-    st.markdown("Antwort von BioGPT: ")
-    st.write("Dies ist der vierte Prompt")
+    # Überprüfe, ob das Modell bereits in der Session gespeichert ist, andernfalls lade es
+    if 'generator' not in st.session_state:
+        st.session_state.generator = load_model()
 
-st.markdown("---")
-# Abschnitt Code selber generieren
-st.markdown(
-    """
-    <div class="infobox-container">
-        Hier kannst du selber einen Prompt schreiben.
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
-prompt_text = """
-- Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
-- Beachte auch, dass das Modell nur Englisch versteht.
-- Beispiel: 'Covid-19 is', 'Migraine has the following symptoms:'
-"""
+    # Erhalte den ausgewählten Prompt aus der Session State oder setze ihn auf den Standardwert
+    prompt_option = st.session_state.get('prompt_option', prompt_list_dropdown[0])
 
-st.markdown(prompt_text)
-                
-input_text = st.text_area("Gib hier deinen Satzanfang ein:", "")
-# Textfeld für die Anzahl der Outputs
-num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "3", max_chars=2)
+    # Streamlit-Elemente
+    st.markdown(
+        """
+        <div class="infobox-container">
+            Hier können verschiedene Prompts mit BioGPT getestet werden.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Überprüfe, ob die eingegebene Zahl zwischen 1 und 10 liegt
-if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
-    num_outputs = int(num_outputs)
-else:
-    st.warning("Bitte geben Sie eine Zahl zwischen 1 und 10 ein.")
+    # Dropdown-Selectbox für die Prompt-Auswahl
+    prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
 
-# Funktion zum Generieren des Texts
-def generate_text(input_text):
+    # Speichere die ausgewählte Option in der Session State
+    st.session_state.prompt_option = prompt_option
+
+    # Aktion basierend auf dem ausgewählten Prompt, wenn der "Generieren"-Button gedrückt wird
+    if st.button("Generieren"):
+        generate_response(prompt_option)
+
+# Funktion zum Generieren der Antwort basierend auf dem ausgewählten Prompt
+def generate_response(prompt_option):
+    generator = st.session_state.generator  # Lade das Modell aus der Session State
+    input_text = None  # Setze den Eingabetext initial auf None
+    # Führe die entsprechende Aktion basierend auf dem ausgewählten Prompt aus
+    if prompt_option.startswith("Prompt 1"):
+        input_text = "COVID-19 is"
+    elif prompt_option.startswith("Prompt 2"):
+        input_text = """ question: What are the symptoms?
+                    context: I would like to know the symptoms of migraine
+                    answer: The symptoms of a migraine are  """
+    elif prompt_option.startswith("Prompt 3"):
+        input_text = """ question: What is the name of the disease?
+                    context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
+                    answer: the disease is called """
+    elif prompt_option.startswith("Prompt 4"):
+        st.write("Dies ist der vierte Prompt")
+        return  # Beende die Funktion, wenn Prompt 4 ausgewählt ist
+
     if input_text:
-        
-        output = generator(input_text, max_length=20, num_return_sequences=num_outputs, do_sample=True)
-            
-        return output
-    else:
-        return None
-
-# Button zum Generieren des Texts
-if st.button("Generieren"):
-    generated_text = generate_text(input_text)
-    if generated_text:
+        output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
         st.markdown("Antwort von BioGPT: ")
-        for item in generated_text:
+        for item in output:
             st.markdown(f"- {item['generated_text']}")
-    else:
-        st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
 
-# Ende des Streamlit Seitenlayouts
-#set_seed(42)
-#st.markdown("Seed set. Let's go!")
-
-
-
-
-
-
+# Starte die Anwendung
+if __name__ == "__main__":
+    main()
