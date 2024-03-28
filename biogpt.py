@@ -146,8 +146,8 @@ def main():
     # Aktion basierend auf dem ausgewählten Prompt
     if prompt_option.startswith("Prompt 1"):
         input_text = "COVID-19 is"
+        st.markdown("Wir generieren hier fünf Antworten von BioGPT auf die Eingabe 'Covid-19 is'. Diese Demonstration zeigt, dass generative Modelle basierend auf stochastischen Prozessen in der Modellarchitektur bei jeder Ausführung eine neue Antwort erzeugen. Besonders für BioGPT gilt, dass die Qualität und Länge der Antworten variieren können und das Modell teilweise nicht in der Lage ist vollständige Sätze zu bilden.")
         output = st.session_state.model(input_text, max_length=20, num_return_sequences=5, do_sample=True)
-        st.markdown("Hier generieren wir fünfmal Antworten von BioGPT für die Eingabe 'Covid-19 is ...'. Hierbei kannst du erkennen, dass generative Modell aufgrund ihrer Architektur jedes Mal eine neue Antwort generieren, die auch in Qualität und Länge variieren können.")
         st.markdown("Antwort von BioGPT: ")
         for item in output:
             st.markdown(f"- {item['generated_text']}")
