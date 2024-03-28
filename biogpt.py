@@ -30,6 +30,7 @@ st.markdown(
         border: 2px solid #3A2A78; /* Lianenrand in lila */
         border-radius: 5px;
         font-family: Arial, sans-serif; /* Schriftart */
+        padding-bottom: 5px; /* Hier kannst du den Abstand anpassen */
     }
     .infobox-title {
         color: #3A2A78; /* Lila Schriftfarbe für den Titel */
@@ -88,9 +89,11 @@ st.markdown(
         <p class="infobox-title">Infobox BioGPT</p>
         <p class="infobox-text">BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
         Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
-        Diese Datenbank ermöglicht es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
-        Trotz seiner Fortschritte funktioniert BioGPT noch rudimentär und ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten. 
-        Es reagiert empfindlich auf Inputs und befindet sich noch in der Entwicklungsphase. Dies kannst du testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst. .</p>
+        Im Vergleich zu anderen großen Sprachmodellen wie GPT-3 wurde BioGPT damit auf viel weniger Daten trainiert wurde. 
+        Deshalb funktioniert BioGPT teilweise rudimentär, ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten 
+        und reagiert empfindlich auf Inputs. 
+        Dennoch ermöglicht diese Datenbank es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
+        Du kannst dies testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst.</p>
     </div>
     """,
     unsafe_allow_html=True
