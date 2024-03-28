@@ -63,7 +63,8 @@ st.markdown(
         background-color: white !important; /* Weißer Hintergrund für das Dropdown-Menü */
     }
     .st-dd-options>li.stOptionSelected {
-        background-color: green !important; /* Grüner Hintergrund für ausgewählte Option */
+    background-color: green !important; /* Grüner Hintergrund für ausgewählte Option */
+    color: white !important; /* Weißer Text für die ausgewählte Option */
     }
     </style>
     """,
