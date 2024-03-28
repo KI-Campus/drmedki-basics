@@ -97,7 +97,7 @@ def load_selectbox_options():
             "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
             "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
             """Prompt 3: Symptomchecker: 
-            Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
+             throbbing, photophobia, phonophobia, and nausea""", 
             #"Prompt 4: ..."
            ]
 
@@ -163,7 +163,7 @@ def main():
                 st.markdown(answer_text)
     elif prompt_option.startswith("Prompt 3"):
         input_text = """ question: What is the name of the disease?
-                context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
+                context: Symptoms: throbbing, photophobia, phonophobia, and nausea.
                 answer: the disease is called """
         output = st.session_state.model(input_text , max_length=200, num_return_sequences=1, do_sample=False)
         st.markdown("Antwort von BioGPT: ")
