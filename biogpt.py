@@ -30,7 +30,7 @@ st.markdown(
         border: 2px solid #3A2A78; /* Lianenrand in lila */
         border-radius: 5px;
         font-family: Arial, sans-serif; /* Schriftart */
-        padding-bottom: 5px; /* Hier kannst du den Abstand anpassen */
+        padding-bottom: 3px; /* Hier kannst du den Abstand anpassen */
     }
     .infobox-title {
         color: #3A2A78; /* Lila Schriftfarbe für den Titel */
