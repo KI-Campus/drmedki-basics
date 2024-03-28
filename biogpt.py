@@ -73,7 +73,7 @@ st.markdown(
         outline-color:  #1AA469 !important; /* Grüner Fokus-Rand */
     }
     div[data-baseweb="select"] > div {
-    background-color: chartreuse;
+    background-color: white;
     }
     </style>
     """,
