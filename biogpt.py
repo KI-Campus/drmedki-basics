@@ -72,6 +72,9 @@ st.markdown(
     .stButton:focus {
         outline-color:  #1AA469 !important; /* Grüner Fokus-Rand */
     }
+    div[data-baseweb="select"] > div {
+    background-color: chartreuse;
+    }
     </style>
     """,
     unsafe_allow_html=True
