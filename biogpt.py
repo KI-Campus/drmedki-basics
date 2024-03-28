@@ -103,7 +103,7 @@ st.markdown(
         <p class="infobox-title">Infobox BioGPT</p>
         <p class="infobox-text">BioGPT ist ein spezielles generatives KI-Modell, das für die biomedizinische Texterzeugung und -analyse entwickelt wurde. 
         Es basiert auf dem Transformer-Sprachmodell und wurde von Grund auf mit einer umfangreichen Datenbank von 15 Millionen PubMed-Abstracts vorab trainiert. 
-        Im Vergleich zu anderen großen Sprachmodellen wie GPT-3 wurde BioGPT damit auf viel weniger Daten trainiert wurde. 
+        Im Vergleich zu anderen großen Sprachmodellen wie GPT-3 wurde BioGPT damit auf viel weniger Daten trainiert. 
         Deshalb funktioniert BioGPT teilweise rudimentär, ist nicht in der Lage, wie andere Chatbots alle Anfragen sinnvoll zu bearbeiten 
         und reagiert empfindlich auf Inputs. 
         Dennoch ermöglicht diese Datenbank es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
