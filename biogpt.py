@@ -90,16 +90,15 @@ def load_model():
     generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
     return generator
 
-# Definiere die Optionen für die Selectbox
-prompt_list_dropdown = ["Wähle Prompt",
-                        "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
-                        "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
-                        """Prompt 3: Symptomchecker: 
-                        Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
-                        #"Prompt 4: ..."
-                       ]
 
-
+def load_selectbox_options():
+    return ["Wähle Prompt",
+            "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
+            "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
+            """Prompt 3: Symptomchecker: 
+            Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound""", 
+            #"Prompt 4: ..."
+           ]
 
 
 
@@ -127,62 +126,91 @@ def main():
        unsafe_allow_html=True
     )
 
- 
+
     st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
-    # Überprüfe, ob das Modell bereits in der Session gespeichert ist, andernfalls lade es
-    if 'generator' not in st.session_state:
-        st.session_state.generator = load_model()
+     # Initialisierung des Session States
+    if "initialized" not in st.session_state:
+        st.session_state.initialized = True
+        st.session_state.model = load_model()
+        st.session_state.selectbox_options = load_selectbox_options()
+     st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
+
+    # Infoboxen und Selectbox
+    st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
     st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown("<div class='infobox-container'>Hier können verschiedene Prompts mit BioGPT getestet werden.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
+    prompt_option = st.selectbox("Prompt Auswahl", st.session_state.selectbox_options)
 
- 
-    # Erhalte den ausgewählten Prompt aus der Session State oder setze ihn auf den Standardwert
-    prompt_option = st.session_state.get('prompt_option', prompt_list_dropdown[0])
-
-    # Streamlit-Elemente
-    st.markdown(
-        """
-        <div class="infobox-container">
-            Hier können verschiedene Prompts mit BioGPT getestet werden.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Dropdown-Selectbox für die Prompt-Auswahl
-    prompt_option = st.selectbox("Prompt Auswahl", prompt_list_dropdown)
-
-    # Speichere die ausgewählte Option in der Session State
-    st.session_state.prompt_option = prompt_option
-
-    # Aktion basierend auf dem ausgewählten Prompt, wenn der "Generieren"-Button gedrückt wird
-    if st.button("Generieren"):
-        generate_response(prompt_option)
-
-# Funktion zum Generieren der Antwort basierend auf dem ausgewählten Prompt
-def generate_response(prompt_option):
-    generator = st.session_state.generator  # Lade das Modell aus der Session State
-    input_text = None  # Setze den Eingabetext initial auf None
-    # Führe die entsprechende Aktion basierend auf dem ausgewählten Prompt aus
+    # Aktion basierend auf dem ausgewählten Prompt
     if prompt_option.startswith("Prompt 1"):
         input_text = "COVID-19 is"
-    elif prompt_option.startswith("Prompt 2"):
-        input_text = """ question: What are the symptoms?
-                    context: I would like to know the symptoms of migraine
-                    answer: The symptoms of a migraine are  """
-    elif prompt_option.startswith("Prompt 3"):
-        input_text = """ question: What is the name of the disease?
-                    context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
-                    answer: the disease is called """
-    elif prompt_option.startswith("Prompt 4"):
-        st.write("Dies ist der vierte Prompt")
-        return  # Beende die Funktion, wenn Prompt 4 ausgewählt ist
-
-    if input_text:
-        output = generator(input_text, max_length=20, num_return_sequences=5, do_sample=True)
+        output = st.session_state.model(input_text, max_length=20, num_return_sequences=5, do_sample=True)
         st.markdown("Antwort von BioGPT: ")
         for item in output:
             st.markdown(f"- {item['generated_text']}")
+    elif prompt_option.startswith("Prompt 2"):
+        input_text = """ question: What are the symptoms?
+                context: I would like to know the symptoms of migraine
+                answer: The symptoms of a migraine are  """
+        output = st.session_state.model(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+        st.markdown("Antwort von BioGPT: ")
+        for item in output:
+            answer_start = item['generated_text'].find('answer:')
+            if answer_start != -1:
+                answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+                st.markdown(answer_text)
+    elif prompt_option.startswith("Prompt 3"):
+        input_text = """ question: What is the name of the disease?
+                context: Symptoms: Intense headache often accompanied by nausea, vomiting, and sensitivity to light and sound. Some people also experience visual disturbances known as auras, such as seeing flashing lights or zigzag lines.
+                answer: the disease is called """
+        output = st.session_state.model(input_text , max_length=200, num_return_sequences=1, do_sample=False)
+        st.markdown("Antwort von BioGPT: ")
+        for item in output:
+            answer_start = item['generated_text'].find('answer:')
+            if answer_start != -1:
+                answer_text = item['generated_text'][answer_start + len('answer:'):].strip()
+                st.markdown(answer_text)
+    elif prompt_option.startswith("Prompt 4"):
+        st.markdown("Antwort von BioGPT: ")
+        st.write("Dies ist der vierte Prompt")
 
-# Starte die Anwendung
+    st.markdown("---")
+
+    # Abschnitt Code selber generieren
+    st.markdown("<div class='infobox-container'>Hier kannst du selber einen Prompt schreiben.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
+    prompt_text = """
+    - Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
+    - Beachte auch, dass das Modell nur Englisch versteht.
+    - Beispiel: 'Covid-19 is', 'Migraine has the following symptoms:'
+    """
+    st.markdown(prompt_text)
+    input_text = st.text_area("Gib hier deinen Satzanfang ein:", "")
+    num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "3", max_chars=2)
+
+    if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
+        num_outputs = int(num_outputs)
+    else:
+        st.warning("Bitte geben Sie eine Zahl zwischen 1 und 10 ein.")
+
+    def generate_text(input_text):
+        if input_text:
+            output = st.session_state.model(input_text, max_length=20, num_return_sequences=num_outputs, do_sample=True)
+            return output
+        else:
+            return None
+
+    if st.button("Generieren"):
+        generated_text = generate_text(input_text)
+        if generated_text:
+            st.markdown("Antwort von BioGPT: ")
+            for item in generated_text:
+                st.markdown(f"- {item['generated_text']}")
+        else:
+            st.warning("Bitte geben Sie einen Text ein, um fortzufahren.")
+
 if __name__ == "__main__":
     main()
