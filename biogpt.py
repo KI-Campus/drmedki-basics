@@ -12,9 +12,6 @@ st.markdown(
     .stTextInput>div>div>input {
         color: #6A5ACD; /* Textfarbe für Texteingaben */
     }
-    #.stTextArea>div>div>textarea {
-    #    color: #6A5ACD; /* Textfarbe für Textbereiche */
-    #}
     .stTextArea>div>div>textarea {
         background-color: white !important; /* Weißer Hintergrund */
         color: black !important; /* Schwarzer Text */
@@ -190,7 +187,7 @@ def main():
     - Beispiel: 'Covid-19 is', 'Migraine has the following symptoms:'
     """
     st.markdown(prompt_text)
-    input_text = st.text_area("Gib hier deinen Satzanfang ein:", "")
+    input_text = st.text_input("Gib hier deinen Satzanfang ein:", "")
     num_outputs = st.text_input("Anzahl der generierten Antworten (1-10):", "3", max_chars=2)
 
     if num_outputs.isdigit() and 1 <= int(num_outputs) <= 10:
