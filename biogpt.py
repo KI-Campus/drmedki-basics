@@ -85,11 +85,9 @@ st.markdown(
 # Laden des Modells und der Tokenizer
 @st.cache(allow_output_mutation=True)
 def load_model():
-    st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
     model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
     tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
     generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
-    st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
     return generator
 
 # Definiere die Optionen für die Selectbox
@@ -129,10 +127,14 @@ def main():
        unsafe_allow_html=True
     )
 
+ 
+    st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
     # Überprüfe, ob das Modell bereits in der Session gespeichert ist, andernfalls lade es
     if 'generator' not in st.session_state:
         st.session_state.generator = load_model()
+    st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
 
+ 
     # Erhalte den ausgewählten Prompt aus der Session State oder setze ihn auf den Standardwert
     prompt_option = st.session_state.get('prompt_option', prompt_list_dropdown[0])
 
