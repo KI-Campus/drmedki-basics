@@ -66,6 +66,12 @@ st.markdown(
     background-color: green !important; /* Grüner Hintergrund für ausgewählte Option */
     color: white !important; /* Weißer Text für die ausgewählte Option */
     }
+    .st-dd-options>li.stOptionSelected:focus {
+        outline-color:  #1AA469 !important; /* Grüner Fokus-Rand */
+    }
+    .stButton:focus {
+        outline-color:  #1AA469 !important; /* Grüner Fokus-Rand */
+    }
     </style>
     """,
     unsafe_allow_html=True
