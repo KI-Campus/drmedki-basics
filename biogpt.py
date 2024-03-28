@@ -129,6 +129,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
 prompt_list_dropdown = ["Wähle Prompt",
                         "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
                         "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
@@ -199,6 +200,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
 prompt_text = """
 - Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
 - Beachte auch, dass das Modell nur Englisch versteht.
