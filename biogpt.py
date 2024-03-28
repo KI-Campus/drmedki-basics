@@ -12,8 +12,12 @@ st.markdown(
     .stTextInput>div>div>input {
         color: #6A5ACD; /* Textfarbe für Texteingaben */
     }
+    #.stTextArea>div>div>textarea {
+    #    color: #6A5ACD; /* Textfarbe für Textbereiche */
+    #}
     .stTextArea>div>div>textarea {
-        color: #6A5ACD; /* Textfarbe für Textbereiche */
+        background-color: white !important; /* Weißer Hintergrund */
+        color: black !important; /* Schwarzer Text */
     }
     .stButton>button {
         background-color: #3A2A78; /* Hintergrundfarbe für Buttons */
@@ -126,7 +130,7 @@ def main():
        unsafe_allow_html=True
     )
 
-
+    st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
     st.markdown("<div class='custom-box'>Loading model...</div>", unsafe_allow_html=True)
      # Initialisierung des Session States
     if "initialized" not in st.session_state:
@@ -136,7 +140,7 @@ def main():
     st.markdown("<div class='custom-box'>Model loaded.</div>", unsafe_allow_html=True)
 
     # Infoboxen und Selectbox
-    st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
+    #st.markdown("<div style='height: 1cm;'></div>", unsafe_allow_html=True)
     st.markdown("---")
     st.markdown("<div class='infobox-container'>Hier können verschiedene Prompts mit BioGPT getestet werden.</div>", unsafe_allow_html=True)
     st.markdown("<div style='height: 0.3cm;'></div>", unsafe_allow_html=True)
