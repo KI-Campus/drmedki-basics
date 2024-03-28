@@ -146,7 +146,7 @@ def main():
     # Aktion basierend auf dem ausgewählten Prompt
     if prompt_option.startswith("Prompt 1"):
         input_text = "COVID-19 is"
-        st.markdown("Wir generieren hier fünf Antworten von BioGPT auf die Eingabe 'Covid-19 is'. Diese Demonstration zeigt, dass generative Modelle basierend auf stochastischen Prozessen in der Modellarchitektur bei jeder Ausführung eine neue Antwort erzeugen. Besonders für BioGPT gilt, dass die Qualität und Länge der Antworten variieren können und das Modell teilweise nicht in der Lage ist vollständige Sätze zu bilden.")
+        st.markdown("Wir generieren hier fünf Antworten von BioGPT auf die Eingabe 'Covid-19 is'. Diese Demonstration zeigt, dass generative Modelle auf stochastischen Prozessen in der Modellarchitektur basieren und damit bei jeder Ausführung eine neue Antwort erzeugen. Besonders für BioGPT gilt, dass die Qualität und Länge der Antworten variieren können und das Modell teilweise nicht in der Lage ist vollständige Sätze zu bilden. Die Generierung der Ausgabe kann einige Sekunden dauern.")
         output = st.session_state.model(input_text, max_length=20, num_return_sequences=5, do_sample=True)
         st.markdown("Antwort von BioGPT: ")
         for item in output:
@@ -185,7 +185,7 @@ def main():
     prompt_text = """
     - Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
     - Beachte auch, dass das Modell nur Englisch versteht.
-    - Beispiele: 'Covid-19 is', 'Migraine has the following symptoms:','Fever is caused by'
+    - Beispiele: 'Covid-19 is', 'Migraine has the following symptoms:', 'Fever is caused by'
     """
     st.markdown(prompt_text)
     input_text = st.text_input("Gib hier deinen Satzanfang ein:", "")
