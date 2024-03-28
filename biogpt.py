@@ -147,8 +147,7 @@ def main():
     if prompt_option.startswith("Prompt 1"):
         input_text = "COVID-19 is"
         output = st.session_state.model(input_text, max_length=20, num_return_sequences=5, do_sample=True)
-        st.markdown("Hier generieren wir fünfmal Antworten von BioGPT für die Eingabe 'Covid-19 is ...'. 
-        Beachte, dass das Modell aufgrund seiner Konstruktion jedes Mal eine neue Antwort generiert, die in Qualität und Läünge variieren kann.")
+        st.markdown("Hier generieren wir fünfmal Antworten von BioGPT für die Eingabe 'Covid-19 is ...'. Hierbei kannst du erkennen, dass generative Modell aufgrund ihrer Architektur jedes Mal eine neue Antwort generieren, die auch in Qualität und Länge variieren können.")
         st.markdown("Antwort von BioGPT: ")
         for item in output:
             st.markdown(f"- {item['generated_text']}")
