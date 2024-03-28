@@ -39,6 +39,10 @@ st.markdown(
     .infobox-text {
         color: black; /* Schwarze Schriftfarbe für den Text */
     }
+    .infobox-source {
+        font-size: smaller; /* Kleinere Schriftgröße für die Quellenangabe */
+        margin-top: 5px; /* Abstand nach oben */
+    }
     .custom-box {
         padding: 10px;
         background-color: black; /* Schwarzer Hintergrund */
@@ -94,6 +98,8 @@ st.markdown(
         und reagiert empfindlich auf Inputs. 
         Dennoch ermöglicht diese Datenbank es BioGPT, fundierte Einblicke in komplexe biologische Fragestellungen zu liefern und die biomedizinische Forschung zu unterstützen. 
         Du kannst dies testen, indem du deine Eingaben in BioGPT variierst und die Ergebnisse vergleichst.</p>
+        <p class="infobox-source">Quelle: Renqian Luo, Liai Sun, Yingce Xia, Tao Qin, Sheng Zhang, Hoifung Poon, Tie-Yan Liu, BioGPT: 
+        generative pre-trained transformer for biomedical text generation and mining, Briefings in Bioinformatics, Volume 23, Issue 6, November 2022, bbac409, https://doi.org/10.1093/bib/bbac409</p>
     </div>
     """,
     unsafe_allow_html=True
