@@ -93,7 +93,8 @@ def load_model():
 
 
 def load_selectbox_options():
-    return ["Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
+    return ["Wähle Prompt",
+            "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
             "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
             """Prompt 3: Symptomchecker: 
              throbbing, photophobia, phonophobia, and nausea""", 
