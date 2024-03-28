@@ -184,7 +184,7 @@ def main():
     prompt_text = """
     - Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
     - Beachte auch, dass das Modell nur Englisch versteht.
-    - Beispiel: 'Covid-19 is', 'Migraine has the following symptoms:'
+    - Beispiele: 'Covid-19 is', 'Migraine has the following symptoms:','Fever is caused by'
     """
     st.markdown(prompt_text)
     input_text = st.text_input("Gib hier deinen Satzanfang ein:", "")
