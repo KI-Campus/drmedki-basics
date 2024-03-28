@@ -94,7 +94,7 @@ def load_model():
 
 def load_selectbox_options():
     return ["Wähle Prompt",
-            "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid is ...'", 
+            "Prompt 1: Generiere 5 Antworten für die Eingabe 'Covid-19 is ...'", 
             "Prompt 2: Beantworte die Frage: 'What are the symptoms of a migraine?'", 
             """Prompt 3: Symptomchecker: 
              throbbing, photophobia, phonophobia, and nausea""", 
@@ -147,6 +147,8 @@ def main():
     if prompt_option.startswith("Prompt 1"):
         input_text = "COVID-19 is"
         output = st.session_state.model(input_text, max_length=20, num_return_sequences=5, do_sample=True)
+        st.markdown("Hier generieren wir fünfmal Antworten von BioGPT für die Eingabe 'Covid-19 is ...'. 
+        Beachte, dass das Modell aufgrund seiner Konstruktion jedes Mal eine neue Antwort generiert, die in Qualität und Läünge variieren kann.")
         st.markdown("Antwort von BioGPT: ")
         for item in output:
             st.markdown(f"- {item['generated_text']}")
