@@ -118,7 +118,7 @@ st.markdown("---")
 st.markdown(
     """
     <div class="infobox-container">
-        <p class="infobox-text">Hier können verschiedene Prompts mit BioGPT getestet werden.</p>
+        Hier können verschiedene Prompts mit BioGPT getestet werden.
     </div>
     """,
     unsafe_allow_html=True
