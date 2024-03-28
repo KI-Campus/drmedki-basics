@@ -188,12 +188,11 @@ st.markdown("---")
 st.markdown(
     """
     <div class="infobox-container">
-        <p class="infobox-text">Hier kannst du selber einen Prompt schreiben.</p>
+        Hier kannst du selber einen Prompt schreiben.
     </div>
     """,
     unsafe_allow_html=True
 )
-
 prompt_text = """
 - Schreibe den Anfang einen Satzes und lasse das Modell deinen Satz vervollständigen, siehe Beispiel Prompt 1.
 - Beachte auch, dass das Modell nur Englisch versteht.
